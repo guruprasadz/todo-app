@@ -1,0 +1,85 @@
+- if tasks.empty?
+  %span.text-warning 
+    There are no tasks!   
+- else
+  / Declare Variable
+  -taskList=tasks.all.where('due_date < ?',Date.today).order(created_at: :desc)
+  - unless taskList.empty?
+    %span.text-warning
+      Pending Tasks
+    %br
+    %br
+    %table.table.table-hover.table-bordered.table-responsive.sortable
+      %thead
+        %tr
+          %th Task         
+          %th Due Date       
+          %th Actions     
+      %tbody         
+      - taskList.each do |task|
+        %tr.danger
+          %td               
+            %strong= task.title
+            %span.label.label-default
+              Priority:
+              =task.priority            
+          %td.text-info= task.due_date
+          %td
+            = link_to edit_task_path(task), title: 'Edit Task',remote: true do
+              %i.glyphicon.glyphicon-edit
+            = link_to completed_path(task),title: 'Complete Task', remote: true do
+              %i.glyphicon.glyphicon-ok
+            =link_to task_path(task),title: 'Delete Task',remote: true,method: :delete ,data: { confirm: "Are you sure you want to delete task : #{task.title}?"} do 
+              %i.glyphicon.glyphicon-remove   
+
+  %table-bordered
+  %br
+  %span.text-warning
+    To-do Tasks
+  %br
+  %br
+  %table.table.table-hover.table-bordered.table-responsive.sortable
+    %thead
+      %tr
+        %th Task         
+        %th Due Date       
+        %th Actions     
+    %tbody         
+      - tasks.each do |task|
+        - unless task.due_date < Date.today
+          - unless task.completed_at.nil?
+            %tr.success
+              %td               
+                %strong= task.title   
+                %span.label.label-default
+                  Priority:
+                  =task.priority          
+              %td.text-info= task.due_date             
+              %td
+                = link_to edit_task_path(task),title: 'Edit', remote: true do
+                  %i.glyphicon.glyphicon-edit
+                = link_to completed_path(task), title: 'Complete Task',remote: true do
+                  %i.glyphicon.glyphicon-ok
+                =link_to task_path(task),title: 'Delete Task',remote: true,method: :delete ,data: { confirm: "Are you sure you want to delete task : #{task.title}?"} do
+                  %i.glyphicon.glyphicon-remove 
+          - else
+            %tr
+              %td               
+                %strong= task.title   
+                %span.label.label-default
+                  Priority:
+                  =task.priority          
+              %td.text-info= task.due_date             
+              %td
+                = link_to edit_task_path(task),title: 'Edit', remote: true do
+                  %i.glyphicon.glyphicon-edit
+                = link_to completed_path(task),title: 'Complete Task', remote: true do
+                  %i.glyphicon.glyphicon-ok
+                =link_to task_path(task),title: 'Delete Task',remote: true,method: :delete ,data: { confirm: "Are you sure you want to delete task : #{task.title}?"} do
+                  %i.glyphicon.glyphicon-remove 
+
+                
+                  
+      
+
+        

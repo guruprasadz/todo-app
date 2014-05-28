@@ -1,0 +1,10 @@
+= simple_form_for(resource, as: resource_name, url: password_path(resource_name), class:"new_user",html: { method: :post }) do |f|
+  = f.error_notification
+  %h2 Forgot your password?
+  .form-inputs
+    = f.email_field :email, required: true, autofocus: true,:placeholder => "Email address", :class => "form-control"
+  %br
+  .form-actions
+    = f.button :submit, "Send me reset password instructions" ,class: 'btn btn-lg btn-primary btn-block'
+%div.devise_links
+  = render "devise/shared/links"

@@ -1,0 +1,17 @@
+
+%div.modal-header
+  %h1
+    =task.new_record? ? 'New Task' : "Editing task: #{task.title}"  
+= simple_form_for task, remote: true do |f|   
+  %div.modal-body
+    .form-inputs
+      = f.label :title
+      = f.text_field :title , :class => "form-control" 
+      = f.label :description
+      = f.text_area :description, :class => "form-control"
+      = f.input :due_date , as: :string, input_html: {id:'datetimepicker',class: 'datetimepicker form-control' ,value: task.due_date.present? ? localize(task.due_date,format:'%m/%d/%Y  %H:%M  %p') : nil}
+      = f.label :priority
+      = f.select :priority ,[["Very High","Very High"],["High", "High"], ["Normal", "Normal"],["Low","Low"]] ,input_html:{class: 'form-control'}
+  %div.modal-footer
+    %button.btn.btn-default{"data-dismiss" => "modal", type: "button"} Close
+    = f.submit 'Save', class: 'btn btn-primary'

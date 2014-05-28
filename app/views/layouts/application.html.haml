@@ -1,0 +1,26 @@
+!!! 
+%html   
+  %head     
+    %title Todo     
+    = stylesheet_link_tag    "application", media: "all"  
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    %div.navbar.navbar-inverse.navbar-fixed-top
+      %div.container
+        %a.navbar-brand TODO Welcome
+        %a.navbar-brand=current_user.first_name
+        %ul.nav.navbar-nav.navbar-right
+          %li.navbar-text=current_user.email
+          %li.navbar-link=link_to 'Logout' , destroy_user_session_path, method: :delete
+    .container.row-fluid
+      .jumbotron
+        .span10.offset
+          .hero-unit.text-center
+            .text-center
+              %br
+              %strong Add Your To-do tasks and get busy
+              %br
+              %br
+            = link_to 'Add New task', new_task_path, class: 'btn btn-primary', remote: true
+    =yield

@@ -1,0 +1,67 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require bootstrap
+ *= require bootstrap-datepicker
+ *= require bootstrap-datetimepicker
+ *= require bootstrap-sortable
+ *= require_tree .
+ *= require_self
+ */
+@import 'bootstrap';
+@import "bootstrap/theme";
+@import 'bootstrap-datetimepicker';
+
+#user_email,#user_password,#user_password_confirmation{
+	background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    color: #555555;
+    display: block;
+    font-size: 14px;
+    height: 34px;
+    line-height: 1.42857;
+    padding: 6px 12px;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    vertical-align: middle;
+    width: 100%;
+}
+form.new_user, .devise_links {
+    margin: 0 auto;
+    max-width: 350px;
+    padding: 15px;
+}
+form#new_user .form-control {
+    font-size: 16px;
+    height: auto;
+    padding: 10px;
+    position: relative;
+}
+.modal{
+  
+    background-clip: padding-box;
+    background-color: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 6px 6px 6px 6px;
+    box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+    outline: 0 none;
+    margin-left: 30%;
+    margin-top: 5%;
+    overflow: auto;
+    height: 77%;
+    width: 40%;
+}
+.label.label-default{
+    
+    margin-left:2%;
+}

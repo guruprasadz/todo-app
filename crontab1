@@ -1,0 +1,6 @@
+
+
+# Begin Whenever generated tasks for: /home/aspire9/todo/config/schedule.rb
+* * * * * /bin/bash -l -c 'cd /home/aspire9/todo && bin/rails runner -e production '\''Task.cron_job'\'' >> log/cron_status.log 2>> log/cron_error.log'
+
+# End Whenever generated tasks for: /home/aspire9/todo/config/schedule.rb

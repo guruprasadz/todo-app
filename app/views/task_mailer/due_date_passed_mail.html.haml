@@ -1,0 +1,14 @@
+!!!
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  %body
+    %h1
+    %p
+      Task is due !!Do Something !!
+      %strong= @task.title
+      %br
+      = @task.description
+      %strong 
+        Due Date for the task is #{@task.due_date}
+    %p Thanks for joining and have a great day!
