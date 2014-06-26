@@ -51,11 +51,16 @@ class TasksController < ApplicationController  #Task controller to manage tasks
 	end
 
 	def completed
+
 		@task = Task.find(params[:id])
-		authorize! :edit, @task
-		@task.is_completed=true
-		@task.completed_at=Date.today
-		save_task
+		if  @task.is_completed.nil? && !@task.is_completed
+			authorize! :edit, @task
+			@task.is_completed=true
+			@task.completed_at=Date.today
+			@task.due_date=DateTime.now
+			
+		end
+			save_task
 	end
 
 	private 

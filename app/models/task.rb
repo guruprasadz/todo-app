@@ -5,11 +5,19 @@ class Task < ActiveRecord::Base
 	belongs_to :user 
 	validates_presence_of :user
 
-	def self.cron_job
-		tasks=Task.where(:completed_at => nil).all
+	def self.due_task_notification_cron_job
+		tasks=Task.where(' is_completed = ?',false).all
 		tasks.each do |t|
-			if t.due_date < Date.today 
+			if t.due_date.to_date < Date.today 
 				TaskMailer.due_date_passed_mail(t.user,t).deliver
+			end
+		end
+	end
+	def self.todays_task_notification_cron_job
+		tasks=Task.where(' is_completed = ?',false).all
+		tasks.each do |t|
+			if t.due_date.to_date == Date.today 
+				TaskMailer.todays_due_task_mail(t.user,t).deliver
 			end
 		end
 	end

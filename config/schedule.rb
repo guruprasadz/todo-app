@@ -23,5 +23,9 @@ set :output, {
 	:standard => 'log/cron_status.log'
 }
 every 1.day, :at => '11:30 am' do
-	runner "Task.cron_job"
+	runner "Task.due_task_notification_cron_job"
+end
+
+every 5.hours do
+	runner "Task.todays_task_notification_cron_job"
 end

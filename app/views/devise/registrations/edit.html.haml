@@ -1,8 +1,10 @@
 %h2
   Edit #{resource_name.to_s.humanize}
 = simple_form_for(resource, as: resource_name, url: registration_path(resource_name),class:"new_user", html: { method: :put }) do |f|
-  %div.alert.alert-dismissable.alert-danger
-    = f.error_notification
+  -unless  f.error_notification.nil?
+    %div.alert.alert-dismissable.alert-danger  
+      = f.error_notification
+      = render "devise/shared/error_messages", :target => @user
   .form-inputs
     = f.label :first_name
     = f.text_field :first_name ,required: true, autofocus: true ,:class => "form-control"

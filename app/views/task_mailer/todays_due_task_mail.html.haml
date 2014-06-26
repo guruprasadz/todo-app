@@ -1,0 +1,14 @@
+!!!
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  %body
+    %h1
+    %p
+      Hi, One of your tasks is due today.
+      %strong= @task.title
+      %br
+      = @task.description
+      %strong 
+      Get up and Finish the task!!
+    %p Thanks for joining and have a great day!

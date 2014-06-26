@@ -11,4 +11,11 @@ class TaskMailer < ActionMailer::Base
   	@task=task
   	mail(to:@user.email,subject:"Due date passed")
   end 
+
+  def todays_due_task_mail(user,task)
+  	@user=user
+  	@task=task
+  	mail(to:@user.email,subject:"Today's Due Task")
+  end
+  
 end

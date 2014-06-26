@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     root to: 'pages#home'
     resources :tasks, except: [:index]
     get 'tasks/:id/completed' => 'tasks#completed', as: :completed
-
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
